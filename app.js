@@ -4,7 +4,7 @@ const app = new Vue({
 
 	data:{
 
-		title:'Hello Coding Guru',
+		title:'TODO-LIST',
 		newTodo:'',
 		todos: []
 	},
@@ -28,8 +28,9 @@ const app = new Vue({
 
 		alldone(){
 			this.todos.forEach(function(todo){
-				todo.done = false;
+				todo.done = true;
 			});
 		}
+		
 	}
 })
