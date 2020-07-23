@@ -2,34 +2,45 @@
 <html>
 <head>
 	<title>ToDo App</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
 	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css">
+
 	<link rel="stylesheet" type="text/css" href="app.css">
+	
+	
 </head>
 <body>
 
 
 
-<div class="container">
+<div id ="container">
+
 	<main id="app">
-		<h3>{{title}}</h3> 
+		<h3>{{title}}<i @click="alldone" class="fa fa-check"></i></h3> 
 		<form @submit.prevent="addTodo">
-			<label>ToDo List</label>
-			<input v-model="newTodo" type="text" name="newTodo" placeholder="Add Todo">
-			<button type="submit" name="button">ADD</button>
+			
+			<input v-model="newTodo" type="text" name="newTodo" placeholder="Add New Todo">
+
+			<!-- <button type="submit" name="button" class="btn btn-secondary">ADD</button> -->
+
 		</form>
 
 		
 
-		<ul v-for="todo in todos">
-			<li>
-				<input type="checkbox" v-model="todo.done">
-				<span  class="{done: todo.done}">{{todo.title}}</span>
-				<button @click="removeTodo(todo)" class="btn btn-danger">Remove</button>
+		<ul>
+			<li v-for="todo in todos">
+
+				<span id="delete"><i @click="removeTodo(todo)" class="fa fa-trash"></i></span>
+
+				<span><input type="checkbox" v-model="todo.done"></span>
+
+				<span :class="{done: todo.done}">{{todo.title}}</span>
+				
 			</li>
 		</ul>
 
-		<button @click="alldone">ALL DONE</button>
 	</main>
 </div>
 	
@@ -38,9 +49,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<script src="app.js"></script>
 
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+	
 
 </body>
 </html>
